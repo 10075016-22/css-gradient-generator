@@ -45,6 +45,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 6. El código CSS se genera automáticamente
 7. Haz clic en el botón "Copiar" para copiar el código
 
+![Gradient Generator](./doc/css-gradient-generator.png)
+
 ## Contribución
 
 Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría hacer.
