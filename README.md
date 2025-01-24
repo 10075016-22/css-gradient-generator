@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Uso
+
+1. Selecciona el tipo de gradiente (lineal o radial)
+2. Elige los colores usando el selector visual o ingresa valores hexadecimales
+3. Ajusta la opacidad de cada color si lo deseas
+4. Modifica la posición de los puntos de color
+5. Para gradientes lineales, ajusta el ángulo
+6. El código CSS se genera automáticamente
+7. Haz clic en el botón "Copiar" para copiar el código
+
+## Contribución
+
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría hacer.
+
+## Autor
+
+Thiago Lopez - [GitHub](https://github.com/10075016-22)
