@@ -5,14 +5,31 @@ export const hexToRgba = (hex: string, alpha: number) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 
+export type GradientType = "linear" | "radial" | "conic" | "repeating-linear" | "repeating-radial" | "repeating-conic";
+
 export const createGradientStyle = (
-  type: "linear" | "radial",
+  type: GradientType,
   colors: string[],
   alphas: number[],
   angle: number,
   stops: number[]
-) => ({
-  background: type === "linear"
-    ? `linear-gradient(${angle}deg, ${hexToRgba(colors[0], alphas[0])} ${stops[0]}%, ${hexToRgba(colors[1], alphas[1])} ${stops[1]}%)`
-    : `radial-gradient(circle at center, ${hexToRgba(colors[0], alphas[0])} ${stops[0]}%, ${hexToRgba(colors[1], alphas[1])} ${stops[1]}%)`
-}) 
+) => {
+  const colorStops = colors.map((color, i) => 
+    `${hexToRgba(color, alphas[i])} ${stops[i]}%`
+  ).join(', ')
+
+  switch (type) {
+    case "linear":
+      return { background: `linear-gradient(${angle}deg, ${colorStops})` }
+    case "radial":
+      return { background: `radial-gradient(circle at center, ${colorStops})` }
+    case "conic":
+      return { background: `conic-gradient(from ${angle}deg at center, ${colorStops})` }
+    case "repeating-linear":
+      return { background: `repeating-linear-gradient(${angle}deg, ${colorStops})` }
+    case "repeating-radial":
+      return { background: `repeating-radial-gradient(circle at center, ${colorStops})` }
+    case "repeating-conic":
+      return { background: `repeating-conic-gradient(from ${angle}deg at center, ${colorStops})` }
+  }
+}

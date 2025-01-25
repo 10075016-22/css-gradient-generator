@@ -1,0 +1,14 @@
+{
+  "i18n/config.ts -> ./dictionaries/en.json": {
+    "id": 3850,
+    "files": [
+      "static/chunks/850.d30a4a0a63c44cc2.js"
+    ]
+  },
+  "i18n/config.ts -> ./dictionaries/es.json": {
+    "id": 9605,
+    "files": [
+      "static/chunks/605.bf9c42e49c73dde1.js"
+    ]
+  }
+}

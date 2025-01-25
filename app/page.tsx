@@ -7,14 +7,14 @@ import { ColorPicker } from "@/components/gradient-generator/color-picker"
 import { GradientTypeSelector } from "@/components/gradient-generator/gradient-type-selector"
 import { GradientPreview } from "@/components/gradient-generator/gradient-preview"
 import { AngleControl } from "@/components/gradient-generator/angle-control"
-import { createGradientStyle } from "@/lib/gradient"
+import { createGradientStyle, GradientType } from "@/lib/gradient"
 
 export default function GradientGenerator() {
   const [colors, setColors] = useState(["#ff0000", "#0000ff"])
   const [alphas, setAlphas] = useState([1, 1])
   const [angle, setAngle] = useState(90)
   const [stops, setStops] = useState([0, 100])
-  const [gradientType, setGradientType] = useState<"linear" | "radial">("linear")
+  const [gradientType, setGradientType] = useState<GradientType>("linear")
 
   const gradientStyle = createGradientStyle(gradientType, colors, alphas, angle, stops)
   const cssCode = `background: ${gradientStyle.background};`
@@ -33,7 +33,7 @@ export default function GradientGenerator() {
               <div className="grid grid-cols-2 gap-4">
                 <GradientTypeSelector 
                   value={gradientType} 
-                  onChange={setGradientType} 
+                  onChange={(value) => setGradientType(value)} 
                 />
                 {gradientType === "linear" && (
                   <AngleControl angle={angle} onChange={setAngle} />

@@ -4,6 +4,7 @@ import { HexColorPicker } from "react-colorful"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
+import { useTranslations } from "@/hooks/use-translations"
 
 interface ColorPickerProps {
   label: string
@@ -24,6 +25,8 @@ export function ColorPicker({
   onAlphaChange,
   onStopChange,
 }: ColorPickerProps) {
+  const t = useTranslations()
+
   return (
     <div className="space-y-2">
       <Label>{label}</Label>
@@ -40,7 +43,9 @@ export function ColorPicker({
             className="text-sm"
           />
           <div className="space-y-1">
-            <Label className="text-xs">Opacidad: {Math.round(alpha * 100)}%</Label>
+            <Label className="text-xs">
+              {t.configuration.opacity.replace("{value}", Math.round(alpha * 100).toString())}
+            </Label>
             <Slider
               min={0}
               max={100}
@@ -50,7 +55,9 @@ export function ColorPicker({
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs">Posición: {stop}%</Label>
+            <Label className="text-xs">
+              {t.configuration.position.replace("{value}", stop.toString())}
+            </Label>
             <Slider
               min={0}
               max={100}

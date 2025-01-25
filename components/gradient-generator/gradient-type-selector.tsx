@@ -2,30 +2,60 @@
 
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { GradientType } from "@/lib/gradient"
+import { useTranslations } from "@/hooks/use-translations"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface GradientTypeSelectorProps {
-  value: "linear" | "radial"
-  onChange: (value: "linear" | "radial") => void
+  value: GradientType
+  onChange: (value: GradientType) => void
 }
 
+const gradientTypes: GradientType[] = [
+  "linear",
+  "radial",
+  "conic",
+  "repeating-linear",
+  "repeating-radial",
+  "repeating-conic"
+]
+
 export function GradientTypeSelector({ value, onChange }: GradientTypeSelectorProps) {
+  const t = useTranslations()
+
+  const handleValueChange = (newValue: string) => {
+    onChange(newValue as GradientType)
+  }
+
+  if (!t) {
+    return (
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-24" />
+        <div className="grid grid-cols-2 gap-2">
+          {gradientTypes.map((type) => (
+            <Skeleton key={type} className="h-8" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-2">
-      <Label>Tipo de Gradiente</Label>
+      <Label>{t.configuration.gradientType.label}</Label>
       <RadioGroup
-        defaultValue="linear"
         value={value}
-        onValueChange={(value) => onChange(value as "linear" | "radial")}
-        className="flex gap-4"
+        onValueChange={handleValueChange}
+        className="grid grid-cols-2 gap-2"
       >
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="linear" id="linear" />
-          <Label htmlFor="linear" className="text-sm">Lineal</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="radial" id="radial" />
-          <Label htmlFor="radial" className="text-sm">Radial</Label>
-        </div>
+        {gradientTypes.map((type) => (
+          <div key={type} className="flex items-center space-x-2">
+            <RadioGroupItem value={type} id={type} />
+            <Label htmlFor={type} className="text-sm">
+              {t.configuration.gradientType[type]}
+            </Label>
+          </div>
+        ))}
       </RadioGroup>
     </div>
   )

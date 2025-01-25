@@ -1,0 +1,31 @@
+{
+  "title": "Generador de Gradientes CSS",
+  "description": "Una herramienta para generar gradientes CSS fácilmente",
+  "configuration": {
+    "title": "Configuración",
+    "gradientType": {
+      "label": "Tipo de Gradiente",
+      "linear": "Lineal",
+      "radial": "Radial",
+      "conic": "Cónico",
+      "repeating-linear": "Lineal Repetido",
+      "repeating-radial": "Radial Repetido",
+      "repeating-conic": "Cónico Repetido"
+    },
+    "angle": "Ángulo: {angle}°",
+    "position": "Posición: {value}%",
+    "opacity": "Opacidad: {value}%",
+    "color": "Color {number}"
+  },
+  "preview": {
+    "title": "Vista Previa",
+    "cssCode": "Código CSS",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copySuccess": "El código CSS ha sido copiado al portapapeles"
+  },
+  "footer": {
+    "by": "Por: Thiago Lopez",
+    "repository": "Like repository"
+  }
+} 

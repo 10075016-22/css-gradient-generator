@@ -1,11 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { Copy, Check } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useTranslations } from "@/hooks/use-translations"
 
 interface GradientPreviewProps {
   gradientStyle: React.CSSProperties
@@ -15,6 +15,7 @@ interface GradientPreviewProps {
 export function GradientPreview({ gradientStyle, cssCode }: GradientPreviewProps) {
   const { toast } = useToast()
   const [hasCopied, setHasCopied] = useState(false)
+  const t = useTranslations()
 
   useEffect(() => {
     if (hasCopied) {
@@ -29,8 +30,8 @@ export function GradientPreview({ gradientStyle, cssCode }: GradientPreviewProps
     await navigator.clipboard.writeText(cssCode)
     setHasCopied(true)
     toast({
-      title: "Código copiado",
-      description: "El código CSS ha sido copiado al portapapeles.",
+      title: t.preview.copied,
+      description: t.preview.copySuccess,
     })
   }
 
@@ -38,7 +39,7 @@ export function GradientPreview({ gradientStyle, cssCode }: GradientPreviewProps
     <div className="space-y-6">
       <div className="w-full h-64 rounded-lg checkered-background" style={gradientStyle} />
       <div className="space-y-2">
-        <Label>Código CSS</Label>
+        <Label>{t.preview.cssCode}</Label>
         <div className="flex gap-2">
           <div className="flex-1 overflow-x-auto">
             <pre className="p-2 bg-muted rounded-md text-sm font-mono whitespace-pre-wrap break-all">
@@ -50,7 +51,7 @@ export function GradientPreview({ gradientStyle, cssCode }: GradientPreviewProps
             size="icon"
             onClick={handleCopyCode}
             className="shrink-0 transition-all duration-200"
-            title={hasCopied ? "Copiado" : "Copiar código"}
+            title={hasCopied ? t.preview.copied : t.preview.copy}
           >
             {hasCopied ? (
               <Check className="h-4 w-4 text-green-600" />

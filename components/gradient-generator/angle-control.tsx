@@ -2,6 +2,7 @@
 
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
+import { useTranslations } from "@/hooks/use-translations"
 
 interface AngleControlProps {
   angle: number
@@ -9,9 +10,11 @@ interface AngleControlProps {
 }
 
 export function AngleControl({ angle, onChange }: AngleControlProps) {
+  const t = useTranslations()
+
   return (
     <div className="space-y-4">
-      <Label>Ángulo: {angle}°</Label>
+      <Label>{t.configuration.angle.replace("{angle}", angle.toString())}</Label>
       <Slider 
         min={0} 
         max={360} 
